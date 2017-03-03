@@ -21,24 +21,24 @@
 		<profile>
 			<id>persistence</id>
 			<modules>
-				<module>hlh-common-dto</module>
-				<module>hlh-persistence</module>
+				<module>hlh-common-base</module>
+				<module>hlh-persistence-base</module>
 			</modules>
 		</profile>
 		<profile>
-			<id>salesman</id>
+			<id>business</id>
 			<modules>
-				<module>hlh-common-dto</module>
-				<module>hlh-persistence</module>
-				<module>hlh-distribution</module>
+				<module>hlh-common-base</module>
+				<module>hlh-persistence-base</module>
+				<module>hlh-business-parent</module>
 			</modules>
 		</profile>
 		<profile>
-			<id>member</id>
+			<id>web</id>
 			<modules>
-				<module>hlh-common-dto</module>
-                <module>hlh-persistence</module>
-				<module>hlh-member</module>
+				<module>hlh-common-base</module>
+                <module>hlh-persistence-base</module>
+				<module>hlh-web-parent</module>
 			</modules>
 		</profile>
 		
@@ -46,10 +46,10 @@
 		<profile>
 			<id>all</id>
 			<modules>
-				<module>hlh-common-dto</module>
-				<module>hlh-persistence</module>
-				<module>hlh-distribution</module>
-				<module>hlh-member</module>
+				<module>hlh-common-base</module>
+				<module>hlh-persistence-base</module>
+				<module>hlh-business-parent</module>
+				<module>hlh-web-parent</module>
 			</modules>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -61,7 +61,7 @@
 	
 		<dependency>
 			<groupId>com.hlh</groupId>
-			<artifactId>hlh-common-dto</artifactId>
+			<artifactId>hlh-common-base</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -336,35 +336,35 @@
 			<version>1.3.2</version>
 		</dependency>
 		<!-- mybatis end -->
-		<!-- mysql的数据库驱动包 -->
+		<!-- mysql的数据库驱动包 begin -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.26</version>
 		</dependency>
-		<!-- 连接池 -->
-		<!--<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>1.0.14</version>
-		</dependency>-->
-		<!-- 数据源代理可打印出sql -->
-		<!--<dependency>
-			<groupId>p6spy</groupId>
-			<artifactId>p6spy</artifactId>
-			<version>2.1.4</version>
-		</dependency>-->
+		
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-
+		<!-- mysql的数据库驱动包 end -->
+		
+		
+		<!-- resteasy begin -->
 		<dependency>
-			<groupId>org.htmlparser</groupId>
-			<artifactId>htmlparser</artifactId>
-			<version>2.1</version>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>tjws</artifactId>
+			<version>2.1.0.GA</version>
+			<scope>test</scope>
+		</dependency>		
+		
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson-provider</artifactId>
+			<version>3.0.5.Final</version>
 		</dependency>
+		<!-- resteasy end -->
 	</dependencies>
 
 	<build>
@@ -378,18 +378,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
-					<!--<include>**/*.tld</include>-->
-				</includes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
 	</build>
 
 </project>
