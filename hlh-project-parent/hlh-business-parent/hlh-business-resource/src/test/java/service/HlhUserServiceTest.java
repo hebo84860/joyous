@@ -17,13 +17,13 @@ public class HlhUserServiceTest extends BaseTest{
 
     @Test
     public void testSaveUser(){
-        System.out.println("=============");
+        System.out.println("============= testSaveUser begin...");
         HlhUserEntity userEntity = new HlhUserEntity();
         userEntity.setId(2);
         userEntity.setUsername("test");
         userEntity.setPassword("asddsa");
-        userEntity.setNickname("sb2dfgdfgdf");
+        userEntity.setNickname("testSaveUser");
         hlhUserService.saveUserEntity(userEntity);
-
+        System.out.println("============= testSaveUser end.");
     }
 }
