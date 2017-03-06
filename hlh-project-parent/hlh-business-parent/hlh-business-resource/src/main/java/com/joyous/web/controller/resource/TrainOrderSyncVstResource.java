@@ -4,7 +4,7 @@ import com.joyous.common.client.path.BusinessClientPath;
 import com.joyous.common.entity.member.HlhUserEntity;
 import com.joyous.web.controller.service.HlhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
  *
  * Created by hebo on 2017/2/28.
  */
-@Component
+@Controller
 @Path("/")
 public class TrainOrderSyncVstResource {
 
@@ -38,7 +38,7 @@ public class TrainOrderSyncVstResource {
         userEntity.setId(2);
         userEntity.setUsername("test");
         userEntity.setPassword("asddsa");
-        userEntity.setNickname("testSa==========veUser");
+        userEntity.setNickname("asd");
         hlhUserService.saveUserEntity(userEntity);
         System.out.println("============= testSaveUser end.");
 //        BaseSingleResultDto baseResultDto=trainOrderSyncVstService.manualSyncTrainOrderStatusToVst(trainOrderStateSyncRequest);

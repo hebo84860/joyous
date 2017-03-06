@@ -350,21 +350,6 @@
 		</dependency>
 		<!-- mysql的数据库驱动包 end -->
 		
-		
-		<!-- resteasy begin -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>tjws</artifactId>
-			<version>2.1.0.GA</version>
-			<scope>test</scope>
-		</dependency>		
-		
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jackson-provider</artifactId>
-			<version>3.0.5.Final</version>
-		</dependency>
-		<!-- resteasy end -->
 	</dependencies>
 
 	<build>

@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class HlhUserServiceTest extends BaseTest{
 
     @Autowired
-    HlhUserService hlhUserService;
+    private HlhUserService hlhUserService;
 
 
     @Test
@@ -22,7 +22,7 @@ public class HlhUserServiceTest extends BaseTest{
         userEntity.setId(2);
         userEntity.setUsername("test");
         userEntity.setPassword("asddsa");
-        userEntity.setNickname("testSaveUser");
+        userEntity.setNickname("testSaveUsersss");
         hlhUserService.saveUserEntity(userEntity);
         System.out.println("============= testSaveUser end.");
     }

@@ -22,6 +22,17 @@
 	</context-param>
 
 	<!-- resteasy start-->
+	<!-- Auto scan REST service -->
+	<!--<context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>true</param-value>
+	</context-param>-->
+	<!-- 这句是关键 -->
+	<!--<context-param>
+           <param-name>resteasy.resources</param-name>
+           <param-value>com.joyous.web.controller.resource.MessageResource</param-value>
+    </context-param>-->
+
 	<listener>
 		<listener-class>
 			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
