@@ -1,5 +1,6 @@
-package com.joyous.common.entity;
+package com.joyous.common.vo;
 
+import com.joyous.common.entity.Entity;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.io.Serializable;
@@ -9,8 +10,7 @@ import java.io.Serializable;
  * @author lven
  *
  */
-//@Deprecated
-public class BaseReponseHandle implements Serializable,Entity{
+public class BaseResponseHandle implements Serializable,Entity {
 	/**
 	 * 
 	 */
@@ -43,7 +43,6 @@ public class BaseReponseHandle implements Serializable,Entity{
 	public void setIsFail(boolean isFail){}
 	
 	@JsonIgnore
-	@Override
 	public Integer getId() {
 		//不做操作
 		return null;

@@ -44,7 +44,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insertSelective" parameterType="com.joyous.common.entity.member.HlhUserEntity" >
+  <insert id="insertSelective" parameterType="com.joyous.common.entity.member.HlhUserEntity" useGeneratedKeys="true" keyProperty="id">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

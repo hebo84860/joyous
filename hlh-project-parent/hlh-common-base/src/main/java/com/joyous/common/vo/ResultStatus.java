@@ -1,4 +1,4 @@
-package com.joyous.common.entity;
+package com.joyous.common.vo;
 
 public enum ResultStatus {
 	

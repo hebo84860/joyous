@@ -13,12 +13,14 @@
 			http://www.springframework.org/schema/context/spring-context-4.0.xsd 
 			http://www.springframework.org/schema/jee 
 			http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
-			
+
+	<context:property-placeholder location="classpath:properties/url.properties" ignore-unresolvable="true"/>
 	<context:annotation-config />    
-	<context:component-scan base-package="com.yeapoo.statistics" use-default-filters="false">
+	<context:component-scan base-package="com.joyous" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
 
 	<!-- 用户的密码加密或解密 -->
@@ -26,17 +28,6 @@
 
 	<!--<bean id="myUserDetailService" class="com.yeapoo.stattistics.security.UserDetailServiceImpl"/>
 	-->
-	<bean id="propertyConfigurer" class="PropertyConfigurer">
-		<property name="ignoreUnresolvablePlaceholders" value="true" />
-		<property name="ignoreResourceNotFound" value="true"/>
-		<property name="locations">
-			<list>
-				<value>classpath:/maven_properties/01_dev.properties</value>
-                <value>file:/data/etc/common/*.properties</value>
-                <value>file:/data/etc/projects/${project.name}.properties</value>
-			</list>
-		</property>
-	</bean>
-	
+
 	
 </beans>

@@ -1,6 +1,7 @@
 package com.joyous.web.controller.resource;
 
 import com.joyous.common.client.path.BusinessClientPath;
+import com.joyous.common.vo.BaseSingleResultVO;
 import com.joyous.common.entity.member.HlhUserEntity;
 import com.joyous.web.controller.service.HlhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,35 +15,29 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- *
+ * 会员相关resource
  * Created by hebo on 2017/2/28.
  */
 @Controller
 @Path("/")
-public class TrainOrderSyncVstResource {
+public class HlhUserEntityResource {
 
     @Autowired
     private HlhUserService hlhUserService;
 
     /**
-     * 人工同步订单状态到vst
+     * 保存或者修改会员信息
      * @return
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path(BusinessClientPath.Path.MANUAL_ORDER_STATE_TO_VST)
-    public Response manualSyncTrainOrderStatusToVst() {
+    @Path(BusinessClientPath.Path.SAVE_OR_UPDATE_USERS)
+    public Response saveOrUpdateUsers(HlhUserEntity userEntity) {
         System.out.println("============= testSaveUser begin...");
-        HlhUserEntity userEntity = new HlhUserEntity();
-        userEntity.setId(2);
-        userEntity.setUsername("test");
-        userEntity.setPassword("asddsa");
-        userEntity.setNickname("asd");
-        hlhUserService.saveUserEntity(userEntity);
+        BaseSingleResultVO baseResultDto = hlhUserService.saveUserEntity(userEntity);
         System.out.println("============= testSaveUser end.");
-//        BaseSingleResultDto baseResultDto=trainOrderSyncVstService.manualSyncTrainOrderStatusToVst(trainOrderStateSyncRequest);
-        return Response.ok(Response.ok()).build();
+        return Response.ok(baseResultDto).build();
     }
 
 }

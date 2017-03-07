@@ -1,4 +1,4 @@
-package com.joyous.common.entity;
+package com.joyous.common.vo;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -13,7 +13,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @param <T>
  */
 @XmlRootElement
-public class BaseSingleResultDto<T> extends BaseReponseHandle {
+public class BaseSingleResultVO<T> extends BaseResponseHandle {
 
 	private static final long serialVersionUID = 1911878262015746803L;
 
@@ -24,11 +24,11 @@ public class BaseSingleResultDto<T> extends BaseReponseHandle {
 	/** 返回类型:true 同步 false 异步 */
 	private Boolean isSync;
 
-	public BaseSingleResultDto() {
+	public BaseSingleResultVO() {
 		
 	}
 	
-	public BaseSingleResultDto(T result) {
+	public BaseSingleResultVO(T result) {
 		this.result = result;
 	}
 

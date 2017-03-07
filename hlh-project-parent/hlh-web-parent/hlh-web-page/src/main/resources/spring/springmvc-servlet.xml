@@ -17,16 +17,11 @@
             http://www.springframework.org/schema/mvc 
 			http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-	<context:component-scan base-package="com.yeapoo.statistics"
-		use-default-filters="false">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Service" />
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Repository" />
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Component" />
+	<context:component-scan base-package="com.joyous" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
 
 	<mvc:annotation-driven>
@@ -66,21 +61,10 @@
 
 	<mvc:resources mapping="/static/**" location="/static/"/>
 
-	<bean id="propertyConfigurer2" class="PropertyConfigurer">
-		<property name="ignoreUnresolvablePlaceholders" value="true" />
-		<property name="ignoreResourceNotFound" value="true"/>
-		<property name="locations">
-			<list>
-				<value>classpath:/maven_properties/01_dev.properties</value>
-				<!--<value>file:/data/etc/common/*.properties</value>
-				<value>file:/data/etc/projects/${project.name}.properties</value>-->
-			</list>
-		</property>
-	</bean>
 
-	<mvc:interceptors>
+	<!--<mvc:interceptors>
 		<mvc:interceptor>
-			<!--<mvc:mapping path="/**"/>-->
+			&lt;!&ndash;<mvc:mapping path="/**"/>&ndash;&gt;
 			<mvc:mapping path="/ps/*"/>
 			<mvc:mapping path="/main/*"/>
 			<mvc:mapping path="/user/*"/>
@@ -93,7 +77,7 @@
 				<property name="loginUrl" value="../main/login"/>
 			</bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors>-->
 	
 	<mvc:view-controller path="/" view-name="redirect:main/index"/>
 

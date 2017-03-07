@@ -1,5 +1,6 @@
 package com.joyous.web.controller.service;
 
+import com.joyous.common.vo.BaseSingleResultVO;
 import com.joyous.common.entity.member.HlhUserEntity;
 
 /**
@@ -8,6 +9,6 @@ import com.joyous.common.entity.member.HlhUserEntity;
  */
 public interface HlhUserService {
 
-    HlhUserEntity saveUserEntity(HlhUserEntity userEntity);
+    BaseSingleResultVO<HlhUserEntity> saveUserEntity(HlhUserEntity userEntity);
 
 }

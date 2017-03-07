@@ -7,8 +7,8 @@ package com.joyous.common.constant;
  *
  **/
 public enum CodeEnum {
-    SUCCESS(0, "操作成功"),
-    SYSTEM_ERROR(1, "服务器错误，请稍后！"),
+    SUCCESS(200, "操作成功"),
+    SYSTEM_ERROR(500, "不好意思，系统繁忙，请稍后再试！"),
     PARAMS_ERROR(2, "参数错误，请重试"),
     ACCOUNT_EXIST(3, "该用户名已经存在"),
     INVITE_CODE_ERROR(9, "用户注册邀请码错误，请重新确认"),
