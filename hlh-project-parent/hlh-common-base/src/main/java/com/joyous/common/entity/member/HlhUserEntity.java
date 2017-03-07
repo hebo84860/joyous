@@ -2,10 +2,7 @@ package com.joyous.common.entity.member;
 
 import com.joyous.common.entity.Entity;
 
-import java.io.Serializable;
-import java.util.Date;
-
-public class HlhUserEntity implements Serializable,Entity{
+public class HlhUserEntity extends Entity {
     private static final long serialVersionUID = -6392087777310502315L;
     private Integer id;
 
@@ -45,11 +42,7 @@ public class HlhUserEntity implements Serializable,Entity{
 
     private String updateBy;
 
-    private Date updateTime;
-
     private String createBy;
-
-    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -203,13 +196,6 @@ public class HlhUserEntity implements Serializable,Entity{
         this.updateBy = updateBy;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 
     public String getCreateBy() {
         return createBy;
@@ -219,11 +205,4 @@ public class HlhUserEntity implements Serializable,Entity{
         this.createBy = createBy;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

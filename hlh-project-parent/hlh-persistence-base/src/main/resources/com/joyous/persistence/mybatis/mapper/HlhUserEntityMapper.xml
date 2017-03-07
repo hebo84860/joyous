@@ -244,12 +244,12 @@
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createBy != null" >
+      <!--<if test="createBy != null" >
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
+      </if>-->
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>

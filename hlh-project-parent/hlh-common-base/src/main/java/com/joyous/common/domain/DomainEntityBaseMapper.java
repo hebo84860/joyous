@@ -1,7 +1,7 @@
 package com.joyous.common.domain;
 
 import com.joyous.common.entity.BaseQueryEntity;
-import com.joyous.common.entity.Entity;
+import com.joyous.common.entity.Dto;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * 实现相关方法，传入和传出参数需要实现Entity接口
  *
  */
-public interface DomainEntityBaseMapper<I extends Entity,Q extends BaseQueryEntity<? extends Entity>> {
+public interface DomainEntityBaseMapper<I extends Dto,Q extends BaseQueryEntity<? extends Dto>> {
 
 	/**
 	 * @param i

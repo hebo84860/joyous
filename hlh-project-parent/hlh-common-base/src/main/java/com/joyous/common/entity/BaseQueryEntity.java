@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author mashengwen
  */
 @XmlRootElement
-public class BaseQueryEntity<T> implements Serializable,Entity {
+public class BaseQueryEntity<T> implements Serializable,Dto {
 
 	private static final long serialVersionUID = -689667730283333557L;
 

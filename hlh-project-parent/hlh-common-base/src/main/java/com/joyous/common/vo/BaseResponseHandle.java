@@ -1,6 +1,6 @@
 package com.joyous.common.vo;
 
-import com.joyous.common.entity.Entity;
+import com.joyous.common.entity.Dto;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.io.Serializable;
@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author lven
  *
  */
-public class BaseResponseHandle implements Serializable,Entity {
+public class BaseResponseHandle implements Serializable,Dto {
 	/**
 	 * 
 	 */
