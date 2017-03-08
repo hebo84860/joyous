@@ -5,7 +5,8 @@ package com.joyous.common.client.path;
 public enum BusinessClientPath {
 
     /** 保存或者修改会员信息 */
-    SAVE_OR_UPDATE_USERS(Path.SAVE_OR_UPDATE_USERS,"保存或者修改会员信息");
+    SAVE_OR_UPDATE_USERS(Path.SAVE_OR_UPDATE_USERS,"保存或者修改会员信息"),
+    QUERY_UPDATE_USER_LIST(Path.QUERY_UPDATE_USER_LIST,"查询（条件）会员列表");
 
     public String path;
     public String cnName;
@@ -15,8 +16,9 @@ public enum BusinessClientPath {
 		public final static String basePath = "business/";
         public final static String memberPath = "member/";
 
-        /** 保存或者修改会员信息 */
+        /** 会员信息 */
         public final static String SAVE_OR_UPDATE_USERS = basePath + memberPath + "saveOrUpdateUsers";
+        public final static String QUERY_UPDATE_USER_LIST = basePath + memberPath + "queryUpdateUsers";
     }
 
     BusinessClientPath(String path, String cnName) {

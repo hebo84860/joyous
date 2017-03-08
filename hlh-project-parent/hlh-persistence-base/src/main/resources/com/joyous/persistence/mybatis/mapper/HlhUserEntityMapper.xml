@@ -253,4 +253,48 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+    <sql id="Base_Where_Condition">
+        <if test="condition.id!=null and condition.id!=''">
+            AND id = #{condition.id}
+        </if>
+        <if test="condition.username!=null and condition.username!=''">
+            AND username = #{condition.username}
+        </if>
+        <if test="condition.userType!=null and condition.userType!=''">
+            AND user_type = #{condition.userType}
+        </if>
+        <if test="condition.belongSalesman!=null and condition.belongSalesman!=''">
+            AND belong_salesman = #{condition.belongSalesman}
+        </if>
+        <if test="condition.belongFirstDistribution!=null and condition.belongFirstDistribution!=''">
+            AND belong_first_distribution = #{condition.belongFirstDistribution}
+        </if>
+        <if test="condition.status!=null and condition.status!=''">
+            AND status = #{condition.status}
+        </if>
+        <if test="condition.createBy!=null and condition.createBy!=''">
+            AND create_by = #{condition.createBy}
+        </if>
+    </sql>
+
+    <!-- 分页条件查询 -->
+    <select id="query" resultMap="BaseResultMap" parameterType="com.joyous.common.entity.BaseQueryEntity">
+      <include refid="MYSQL.paginationStart"/>
+      SELECT <include refid="Base_Column_List"/> FROM user
+      <where>
+          <include refid="Base_Where_Condition"/>
+      </where>
+      ORDER BY id DESC
+      <include refid="MYSQL.paginationEnd"/>
+    </select>
+    <!-- 统计 -->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM user
+        <where>
+            <include refid="Base_Where_Condition"/>
+        </where>
+    </select>
 </mapper>

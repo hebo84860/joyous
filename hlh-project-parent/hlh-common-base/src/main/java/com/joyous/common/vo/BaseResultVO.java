@@ -61,11 +61,11 @@ public class BaseResultVO<T> extends BaseResponseHandle {
 	}
 
 	@XmlElement
-	public Paging getPagination() {
+	public Paging getPaging() {
 		return paging;
 	}
 
-	public void setPagination(Paging paging) {
+	public void setPaging(Paging paging) {
 		this.paging = paging;
 	}
 	@JsonIgnore

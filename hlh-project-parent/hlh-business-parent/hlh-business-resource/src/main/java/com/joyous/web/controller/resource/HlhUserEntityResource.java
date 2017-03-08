@@ -1,6 +1,8 @@
 package com.joyous.web.controller.resource;
 
 import com.joyous.common.client.path.BusinessClientPath;
+import com.joyous.common.entity.BaseQueryEntity;
+import com.joyous.common.request.HlhUserRequest;
 import com.joyous.common.vo.BaseSingleResultVO;
 import com.joyous.common.entity.member.HlhUserEntity;
 import com.joyous.web.controller.service.HlhUserService;
@@ -38,6 +40,18 @@ public class HlhUserEntityResource {
         BaseSingleResultVO baseResultDto = hlhUserService.saveUserEntity(userEntity);
         System.out.println("============= testSaveUser end.");
         return Response.ok(baseResultDto).build();
+    }
+
+    /**
+     * 查询（条件）会员列表
+     * @return
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path(BusinessClientPath.Path.QUERY_UPDATE_USER_LIST)
+    public Response queryUpdateUserList(BaseQueryEntity<HlhUserRequest> baseQueryEntity) {
+        return Response.ok(hlhUserService.queryHlhUserList(baseQueryEntity)).build();
     }
 
 }

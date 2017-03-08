@@ -42,7 +42,7 @@ public class Paging implements Serializable{
     }
 
     /**
-     * 自定义行数Pagination构造函数
+     * 自定义行数Paging构造函数
      * @param page			当前页
      * @param customRows	自定义行数
      */
@@ -167,7 +167,7 @@ public class Paging implements Serializable{
 
     @Override
     public String toString() {
-        return "Pagination{" +
+        return "Paging{" +
                 "page=" + page +
                 ", rows=" + rows +
                 ", records=" + records +

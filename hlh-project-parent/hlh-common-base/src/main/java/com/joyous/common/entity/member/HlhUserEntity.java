@@ -1,5 +1,7 @@
 package com.joyous.common.entity.member;
 
+import com.joyous.common.constant.Status;
+import com.joyous.common.constant.UserType;
 import com.joyous.common.entity.Entity;
 
 public class HlhUserEntity extends Entity {
@@ -26,7 +28,7 @@ public class HlhUserEntity extends Entity {
 
     private String address;
 
-    private String userType;
+    private UserType userType;
 
     private Integer belongSalesman;
 
@@ -36,7 +38,7 @@ public class HlhUserEntity extends Entity {
 
     private String cardNo;
 
-    private String status;
+    private Status status;
 
     private String description;
 
@@ -132,11 +134,11 @@ public class HlhUserEntity extends Entity {
         this.address = address;
     }
 
-    public String getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
@@ -172,11 +174,11 @@ public class HlhUserEntity extends Entity {
         this.cardNo = cardNo;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

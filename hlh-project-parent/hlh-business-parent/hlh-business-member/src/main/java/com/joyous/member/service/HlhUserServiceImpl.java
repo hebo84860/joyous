@@ -1,6 +1,10 @@
 package com.joyous.member.service;
 
 import com.joyous.common.constant.CodeEnum;
+import com.joyous.common.entity.BaseQueryEntity;
+import com.joyous.common.entity.Paging;
+import com.joyous.common.request.HlhUserRequest;
+import com.joyous.common.vo.BaseResultVO;
 import com.joyous.common.vo.BaseSingleResultVO;
 import com.joyous.common.entity.member.HlhUserEntity;
 import com.joyous.web.controller.service.HlhUserService;
@@ -10,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -25,6 +31,22 @@ public class HlhUserServiceImpl implements HlhUserService {
 
     @Value("${login.url}")
     private String test ;
+
+    public BaseResultVO<HlhUserEntity> queryHlhUserList(BaseQueryEntity<HlhUserRequest> baseQueryEntity){
+        BaseResultVO<HlhUserEntity> baseResultVO = new BaseResultVO<HlhUserEntity>();
+        try {
+            List<HlhUserEntity> userEntities = userEntityMapper.query(baseQueryEntity);
+            int count = userEntityMapper.count(baseQueryEntity);
+            Paging paging = baseQueryEntity.getPaging();
+            paging.countRecords(count);
+            baseResultVO.setPaging(paging);
+            baseResultVO.setResults(userEntities);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResultVO.setErrorMessage(CodeEnum.SYSTEM_ERROR.getValueStr());
+        }
+        return baseResultVO;
+    }
 
     public BaseSingleResultVO<HlhUserEntity> saveUserEntity(HlhUserEntity userEntity) {
         logger.error("saveUserEntity userEntity = " + userEntity);

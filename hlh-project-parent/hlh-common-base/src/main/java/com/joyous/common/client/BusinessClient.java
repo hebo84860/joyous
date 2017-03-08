@@ -1,9 +1,12 @@
 package com.joyous.common.client;
 
 import com.joyous.common.client.path.BusinessClientPath;
+import com.joyous.common.entity.BaseQueryEntity;
 import com.joyous.common.entity.member.HlhUserEntity;
 import com.joyous.common.exception.ExceptionWrapper;
+import com.joyous.common.request.HlhUserRequest;
 import com.joyous.common.util.JSONMapper;
+import com.joyous.common.vo.BaseResultVO;
 import com.joyous.common.vo.BaseSingleResultVO;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -52,6 +55,29 @@ public class BusinessClient {
             ObjectMapper objectMapper = JSONMapper.getInstance();
             String jsonResult = restClient.post(url, String.class, hlhUserEntity);
             return objectMapper.readValue(jsonResult, new TypeReference<BaseSingleResultVO<HlhUserEntity>>() {
+            });
+        } catch (ExceptionWrapper ew) {
+            logger.error(ew.getErrMessage(), ew);
+            throw ew;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    /**
+     * 查询（条件）会员列表
+     *
+     * @param baseQueryEntity
+     * @return
+     */
+    public BaseResultVO<HlhUserEntity> queryUpdateUserList(BaseQueryEntity<HlhUserRequest> baseQueryEntity) {
+        BusinessClientPath command = BusinessClientPath.QUERY_UPDATE_USER_LIST;
+        String url = command.url("http://localhost:8088/");
+        try {
+            ObjectMapper objectMapper = JSONMapper.getInstance();
+            String jsonResult = restClient.post(url, String.class, baseQueryEntity);
+            return objectMapper.readValue(jsonResult, new TypeReference<BaseResultVO<HlhUserEntity>>() {
             });
         } catch (ExceptionWrapper ew) {
             logger.error(ew.getErrMessage(), ew);
