@@ -22,6 +22,13 @@ public class HlhUserEntityReponse implements Serializable, Response {
     private String createTimeStr;
     private String updateTimeStr;
 
+    public HlhUserEntityReponse(){
+
+    }
+    public HlhUserEntityReponse(HlhUserEntity hlhUserEntity){
+        this.hlhUserEntity = hlhUserEntity;
+    }
+
     public HlhUserEntity getHlhUserEntity() {
         return hlhUserEntity;
     }

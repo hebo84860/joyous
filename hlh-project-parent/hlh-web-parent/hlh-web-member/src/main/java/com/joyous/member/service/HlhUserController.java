@@ -10,6 +10,8 @@ import com.joyous.common.request.HlhUserRequest;
 import com.joyous.common.vo.BaseResultVO;
 import com.joyous.common.vo.BaseSingleResultVO;
 import com.joyous.common.vo.Response;
+import com.joyous.common.vo.member.HlhUserEntityReponse;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -41,10 +46,21 @@ public class HlhUserController {
     @RequestMapping("/ajaxQueryUserList")
     @ResponseBody
     public BaseResultVO<? extends Response> queryHlhUserList(HlhUserEntityFrom userEntityFrom){
+        BaseResultVO<HlhUserEntityReponse> baseResultVO = new BaseResultVO<HlhUserEntityReponse>();
+        List<HlhUserEntityReponse> reList = new ArrayList<HlhUserEntityReponse>();
         BaseQueryEntity<HlhUserRequest> baseQueryEntity =
                 new BaseQueryEntity<HlhUserRequest>( userEntityFrom.getPaging(), new HlhUserRequest(userEntityFrom.getHlhUserEntity()));
         BaseResultVO<HlhUserEntity> userList= businessClient.queryUpdateUserList(baseQueryEntity);
-        return null;
+        List<HlhUserEntity> userEntities = userList.getResults();
+        if (CollectionUtils.isNotEmpty(userEntities)){
+            for (HlhUserEntity userEntity : userEntities) {
+                reList.add(new HlhUserEntityReponse(userEntity));
+            }
+        }
+
+        baseResultVO.setPaging(userList.getPaging());
+        baseResultVO.setResults(reList);
+        return baseResultVO;
     }
 
     @RequestMapping("/saveOrUpdateUser")
