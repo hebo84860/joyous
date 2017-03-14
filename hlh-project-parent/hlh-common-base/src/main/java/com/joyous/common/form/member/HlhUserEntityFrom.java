@@ -16,8 +16,8 @@ import java.util.Date;
 public class HlhUserEntityFrom implements Serializable, Form {
     private static final long serialVersionUID = -3146655753733862530L;
 
-    private HlhUserEntity hlhUserEntity;
-    private Paging paging;
+    private HlhUserEntity hlhUserEntity = new HlhUserEntity();
+    private Paging paging = new Paging();
 
     public HlhUserEntity getHlhUserEntity() {
         return hlhUserEntity;

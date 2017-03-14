@@ -1,5 +1,7 @@
 package com.joyous.common.entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -57,25 +59,25 @@ public class BaseQueryEntity<T> implements Serializable,Dto {
 	public void setCondition(T condition) {
 		this.condition = condition;
 	}
-//	@JsonIgnore
+	@JsonIgnore
 	public int getStartRow() {
 		return paging.getStartRow();
 	}
-//	@JsonIgnore
+	@JsonIgnore
 	public int getEndRow() {
 		return paging.getEndRow();
 	}
-//	@JsonIgnore
+	@JsonIgnore
 	public String getSidx() {
 		return paging.getSidx();
 	}
-//	@JsonIgnore
+	@JsonIgnore
 	public String getSord() {
 		return paging.getSord();
 	}
 
-//	@JsonIgnore
-	@Override
+	@JsonIgnore
+//	@Override
 	public Integer getId() {
 		return null;
 	}

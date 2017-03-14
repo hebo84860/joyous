@@ -1,6 +1,6 @@
 package com.joyous.common.entity;
 
-//import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @date 2015-1-15
  */
 @XmlRootElement
-//@JsonIgnoreProperties({"startRow","endRow"})
+@JsonIgnoreProperties({"startRow","endRow"})
 public class Paging implements Serializable{
 
 	/** serialVersionUID */
