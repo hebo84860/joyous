@@ -1,6 +1,7 @@
 package com.joyous.member.service;
 
 import com.joyous.common.client.BusinessClient;
+import com.joyous.common.constant.CodeEnum;
 import com.joyous.common.constant.Status;
 import com.joyous.common.constant.UserType;
 import com.joyous.common.entity.BaseQueryEntity;
@@ -47,35 +48,37 @@ public class HlhUserController {
     @ResponseBody
     public BaseResultVO<? extends Response> queryHlhUserList(HlhUserEntityFrom userEntityFrom){
         BaseResultVO<HlhUserEntityReponse> baseResultVO = new BaseResultVO<HlhUserEntityReponse>();
-        List<HlhUserEntityReponse> reList = new ArrayList<HlhUserEntityReponse>();
-        BaseQueryEntity<HlhUserRequest> baseQueryEntity =
-                new BaseQueryEntity<HlhUserRequest>( userEntityFrom.getPaging(), new HlhUserRequest(userEntityFrom.getHlhUserEntity()));
-        BaseResultVO<HlhUserEntity> userList= businessClient.queryUpdateUserList(baseQueryEntity);
-        List<HlhUserEntity> userEntities = userList.getResults();
-        if (CollectionUtils.isNotEmpty(userEntities)){
-            for (HlhUserEntity userEntity : userEntities) {
-                reList.add(new HlhUserEntityReponse(userEntity));
+        try {
+            List<HlhUserEntityReponse> reList = new ArrayList<HlhUserEntityReponse>();
+            BaseQueryEntity<HlhUserRequest> baseQueryEntity =
+                    new BaseQueryEntity<HlhUserRequest>( userEntityFrom.getPaging(), new HlhUserRequest(userEntityFrom.getHlhUserEntity()));
+            BaseResultVO<HlhUserEntity> userList= businessClient.queryUpdateUserList(baseQueryEntity);
+            List<HlhUserEntity> userEntities = userList.getResults();
+            if (CollectionUtils.isNotEmpty(userEntities)){
+                for (HlhUserEntity userEntity : userEntities) {
+                    reList.add(new HlhUserEntityReponse(userEntity));
+                }
             }
+            baseResultVO.setPaging(userList.getPaging());
+            baseResultVO.setResults(reList);
+        } catch (Exception e) {
+            baseResultVO.setErrorMessage(CodeEnum.SYSTEM_ERROR.getValueStr());
+            e.printStackTrace();
         }
-
-        baseResultVO.setPaging(userList.getPaging());
-        baseResultVO.setResults(reList);
         return baseResultVO;
     }
 
     @RequestMapping("/saveOrUpdateUser")
     @ResponseBody
-    public BaseSingleResultVO<HlhUserEntity> saveOrUpdateHlhUser(){
-
-        logger.info(" saveOrUpdateHlhUser controller info _ _ _");
-        logger.error(" saveOrUpdateHlhUser controller error _ _ _");
-        HlhUserEntity hlhUserEntity = new HlhUserEntity();
-        hlhUserEntity.setId(3);
-        hlhUserEntity.setNickname("fengxng");
-        hlhUserEntity.setUsername("fengxing");
-        hlhUserEntity.setAddress("hunan");
-        hlhUserEntity.setCardNo("430522196303302369");
-        return businessClient.saveOrUpdateHlhUser(hlhUserEntity);
+    public BaseSingleResultVO saveOrUpdateHlhUser(HlhUserEntityFrom userEntityFrom){
+        BaseSingleResultVO baseSingleResultVO = new BaseSingleResultVO();
+        try {
+            baseSingleResultVO = businessClient.saveOrUpdateHlhUser(userEntityFrom.getHlhUserEntity());
+        } catch (Exception e) {
+            baseSingleResultVO.setErrorMessage(CodeEnum.SYSTEM_ERROR.getValueStr());
+            e.printStackTrace();
+        }
+        return baseSingleResultVO;
     }
 
 }
