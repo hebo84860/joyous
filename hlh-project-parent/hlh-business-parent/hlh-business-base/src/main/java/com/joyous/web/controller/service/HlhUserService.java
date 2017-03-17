@@ -16,4 +16,6 @@ public interface HlhUserService {
 
     BaseResultVO<HlhUserEntity> queryHlhUserList(BaseQueryEntity<HlhUserRequest> baseQueryEntity);
 
+    BaseSingleResultVO<HlhUserEntity> selectHlhUserEntityById(Integer id);
+
 }

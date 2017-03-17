@@ -24,13 +24,13 @@ public interface DomainEntityBaseMapper<I extends Dto,Q extends BaseQueryEntity<
 	 * @param id
 	 * getById
 	 */
-	public I selectByPrimaryKey(Long id);
+	public I selectByPrimaryKey(Integer id);
 
 	/**
 	 * @param id
 	 * deleteById
 	 */
-	public int deleteByPrimaryKey(Long id);
+	public int deleteByPrimaryKey(Integer id);
 
 	/**
 	 * @param i

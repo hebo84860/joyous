@@ -53,5 +53,16 @@ public class HlhUserEntityResource {
     public Response queryUpdateUserList(BaseQueryEntity<HlhUserRequest> baseQueryEntity) {
         return Response.ok(hlhUserService.queryHlhUserList(baseQueryEntity)).build();
     }
+    /**
+     * 查询（条件）会员列表
+     * @return
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path(BusinessClientPath.Path.SELECT_HLH_USER_ENTITY_BY_ID)
+    public Response selectHlhUserEntityById(Integer id) {
+        return Response.ok(hlhUserService.selectHlhUserEntityById(id)).build();
+    }
 
 }

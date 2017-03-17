@@ -48,6 +48,18 @@ public class HlhUserServiceImpl implements HlhUserService {
         return baseResultVO;
     }
 
+    public BaseSingleResultVO<HlhUserEntity> selectHlhUserEntityById(Integer id) {
+        BaseSingleResultVO<HlhUserEntity> baseSingleResultVO = new BaseSingleResultVO<HlhUserEntity>();
+        try {
+            HlhUserEntity hlhUserEntity = userEntityMapper.selectByPrimaryKey(id);
+            baseSingleResultVO.setResult(hlhUserEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseSingleResultVO.setErrorMessage(CodeEnum.SYSTEM_ERROR.getValueStr());
+        }
+        return baseSingleResultVO;
+    }
+
     public BaseSingleResultVO<HlhUserEntity> saveUserEntity(HlhUserEntity userEntity) {
         logger.error("saveUserEntity userEntity = " + userEntity);
         BaseSingleResultVO<HlhUserEntity> baseSingleResultDto = new BaseSingleResultVO<HlhUserEntity>();

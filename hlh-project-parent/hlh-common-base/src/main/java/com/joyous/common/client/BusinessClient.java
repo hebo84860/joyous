@@ -87,6 +87,28 @@ public class BusinessClient {
         }
         return null;
     }
+    /**
+     * 查询（条件）会员列表
+     *
+     * @param id
+     * @return
+     */
+    public BaseSingleResultVO<HlhUserEntity> selectHlhUserEntityById(Integer id) {
+        BusinessClientPath command = BusinessClientPath.SELECT_HLH_USER_ENTITY_BY_ID;
+        String url = command.url("http://localhost:8088/");
+        try {
+            ObjectMapper objectMapper = JSONMapper.getInstance();
+            String jsonResult = restClient.post(url, String.class, id);
+            return objectMapper.readValue(jsonResult, new TypeReference<BaseSingleResultVO<HlhUserEntity>>() {
+            });
+        } catch (ExceptionWrapper ew) {
+            logger.error(ew.getErrMessage(), ew);
+            throw ew;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 
 
 }
